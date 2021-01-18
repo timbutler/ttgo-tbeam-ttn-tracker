@@ -61,7 +61,10 @@ void gps_setup() {
 
 static void gps_loop() {
     while (_serial_gps.available()) {
-        _gps.encode(_serial_gps.read());
+        char data = _serial_gps.read();
+        String sdata(data);
+        _gps.encode(data);
+        //Serial.print(data);
     }
 }
 
